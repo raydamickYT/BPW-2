@@ -117,14 +117,19 @@ public class LevelGenerator : MonoBehaviour
     {
         //script will find parametres for current room and checks within those bounds if there is an enemy unity in there.
         var currentRoom = BaseHero.instance.currentRoom;
-        float currentRoomMinX = currentRoom.transform.position.x - walkRange;
-        float currentRoomMaxX = currentRoom.transform.position.x + walkRange;
-        float currentRoomMinY = currentRoom.transform.position.y - walkRange;
-        float currentRoomMaxY = currentRoom.transform.position.y + walkRange;
+        // float currentRoomMinX = currentRoom.transform.position.x - walkRange;
+        // float currentRoomMaxX = currentRoom.transform.position.x + walkRange;
+        // float currentRoomMinY = currentRoom.transform.position.y - walkRange;
+        // float currentRoomMaxY = currentRoom.transform.position.y + walkRange;
+
+        float currentRoomMinX = enemPos.position.x - walkRange;
+        float currentRoomMaxX = enemPos.position.x + walkRange;
+        float currentRoomMinY = enemPos.position.y - walkRange;
+        float currentRoomMaxY = enemPos.position.y + walkRange;
+        //print(currentRoomMaxX);
         var target = FindObjectOfType<BaseHero>();
 
         var enemyPos = Opslag.Where(t => t.Key.x < currentRoomMaxX && t.Key.x > currentRoomMinX && t.Key.y > currentRoomMinY && t.Key.y < currentRoomMaxY && t.Value.walkable).OrderBy(t => Random.value).First().Value;
-        print(enemyPos);
         return enemyPos;
 
         //var enemyPos = Opslag.Where(t => t.Key.x < currentRoomMaxX && t.Key.x > currentRoomMinX && t.Key.y > currentRoomMinY && t.Key.y < currentRoomMaxY && t.Value.walkable).OrderBy(t => Random.value).First().Value;

@@ -101,7 +101,7 @@ MonoBehaviour:
   faction: 1
   unitName: Ogre
   health: 100
-  moveRange: 1
+  moveRange: 2
   attackRange: 2
   attackDmg: 10
   moved: 0

@@ -37,7 +37,6 @@ public class GridManager : MonoBehaviour
 
             }
         }
-
         GameManager.Instance.UpdateGameState(GameState.SpawnEnemies);
     }
 }

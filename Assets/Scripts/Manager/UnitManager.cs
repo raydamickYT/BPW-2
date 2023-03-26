@@ -8,13 +8,14 @@ public class UnitManager : MonoBehaviour
     public static UnitManager Instance;
 
     private List<ScriptableUnit> _units;
+    private List<BaseEnemy> _selectedEnemies;
     public BaseHero selectedHero;
     public BaseEnemy selectedEnemy;
 
     private void Awake()
     {
         Instance = this;
-
+        _selectedEnemies = new List<BaseEnemy>();
         _units = Resources.LoadAll<ScriptableUnit>("Units").ToList();
     }
     public void SpawnHeroes()
@@ -59,5 +60,24 @@ public class UnitManager : MonoBehaviour
     {
         selectedEnemy = Enemy;
         MenuManager.Instance.ShowSelectedEnemy(Enemy);
+    }
+
+    public void FindEnemy()
+    {
+        var GetEnemyTile = LevelGenerator.Instance.FindEnemy();
+        var enemy = GetEnemyTile.occupiedUnit.GetComponent<BaseEnemy>();
+        _selectedEnemies.Add(enemy);
+
+        for (int i = 0; i < _selectedEnemies.Count; i++)
+        {
+            _selectedEnemies[i].GetComponent<BaseEnemy>().test();
+        }
+        enemy.moved = false;
+        if (GetEnemyTile.occupiedUnit.faction == Faction.Enemy)
+        {
+            enemy.EnemyTurn(GetEnemyTile, enemy);
+        }
+        _selectedEnemies.Clear();
+        print("list count "+_selectedEnemies.Count);
     }
 }

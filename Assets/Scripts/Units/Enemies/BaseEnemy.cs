@@ -11,24 +11,18 @@ public class BaseEnemy : BaseUnit
         instance = this;
     }
 
-    public void EnemyTurn()
+    public void EnemyTurn(Tile enemyTile, BaseEnemy enemy)
     {
-        var GetEnemyTile = LevelGenerator.Instance.FindEnemy();
-        var enemy = GetEnemyTile.occupiedUnit.GetComponent<BaseEnemy>();
-        enemy.moved = false;
-        if (GetEnemyTile.occupiedUnit.faction == Faction.Enemy)
-        {
-            UnitManager.Instance.SetSelectedEnemy((BaseEnemy)GetEnemyTile.occupiedUnit);
-            var walkTile = LevelGenerator.Instance.GetEnemyWalkTile(moveRange, transform);
-                walkTile.SetEnemy(UnitManager.Instance.selectedEnemy);
 
-            if (inRange(walkTile.transform.position))
-            {
-                print("found it");
-            }
-        }
+        UnitManager.Instance.SetSelectedEnemy((BaseEnemy)enemyTile.occupiedUnit);
+        var walkTile = LevelGenerator.Instance.GetEnemyWalkTile(moveRange, transform);
+        walkTile.SetEnemy(UnitManager.Instance.selectedEnemy);
+
         enemy.enemyAttack();
         GameManager.Instance.UpdateGameState(GameState.HeroesTurn);
+    }
+    public void test(){
+        print("loop werkt");
     }
 
     public void enemyAttack()
