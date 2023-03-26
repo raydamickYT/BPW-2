@@ -19,7 +19,7 @@ public class BaseEnemy : BaseUnit
         if (GetEnemyTile.occupiedUnit.faction == Faction.Enemy)
         {
             UnitManager.Instance.SetSelectedEnemy((BaseEnemy)GetEnemyTile.occupiedUnit);
-            var walkTile = LevelGenerator.Instance.GetEnemyWalkTile(moveRange);
+            var walkTile = LevelGenerator.Instance.GetEnemyWalkTile(moveRange, transform);
                 walkTile.SetEnemy(UnitManager.Instance.selectedEnemy);
 
             if (inRange(walkTile.transform.position))
