@@ -13,16 +13,14 @@ public class BaseEnemy : BaseUnit
 
     public void EnemyTurn(Tile enemyTile, BaseEnemy enemy)
     {
-
+        print("enemyTIle" + enemyTile + "enemy" + enemy);
         UnitManager.Instance.SetSelectedEnemy((BaseEnemy)enemyTile.occupiedUnit);
         var walkTile = LevelGenerator.Instance.GetEnemyWalkTile(moveRange, transform);
         walkTile.SetEnemy(UnitManager.Instance.selectedEnemy);
+        print("enem loopt");
 
-        enemy.enemyAttack();
+        //enemy.enemyAttack();
         GameManager.Instance.UpdateGameState(GameState.HeroesTurn);
-    }
-    public void test(){
-        print("loop werkt");
     }
 
     public void enemyAttack()

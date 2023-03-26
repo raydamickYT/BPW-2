@@ -41,7 +41,7 @@ public abstract class Tile : MonoBehaviour
             HighLight.SetActive(true);
         }
 
-//werkt nog niet de tiles worden niet gelaten zien.
+        //werkt nog niet de tiles worden niet gelaten zien.
         // if (enemy != null)
         // {
         //     if (!enemy.inRange(transform.position))
@@ -120,7 +120,7 @@ public abstract class Tile : MonoBehaviour
         var lastPos = unit.transform.position;
         var distanceTraveledX = Mathf.Abs(lastPos.x - transform.position.x);
         var distanceTraveledY = Mathf.Abs(lastPos.y - transform.position.y);
-        //this function makes the tile, occupied by a unity (enemy or hero). this means nothing can spawn there
+        //this function makes the tile, occupied by a unit (enemy or hero). this means nothing can spawn there
         //if the tile selected is occupied, it'll not set anything to that tile
         if (unit.occupiedTile != null) unit.occupiedTile.occupiedUnit = null;
         //if the distance between the tile you selected and the range your player can travel is too big
@@ -130,7 +130,6 @@ public abstract class Tile : MonoBehaviour
             if (walkable && !unit.moved)
             {
                 UnitManager.Instance.SetSelectedHero(null);
-                UnitManager.Instance.SetSelectedEnemy(null);
                 unit.transform.position = transform.position;
                 occupiedUnit = unit;
                 unit.occupiedTile = this;
@@ -143,30 +142,24 @@ public abstract class Tile : MonoBehaviour
 
     public void SetEnemy(BaseUnit unit)
     {
-        var lastPos = unit.transform.position;
-        var distanceTraveledX = Mathf.Abs(lastPos.x - transform.position.x);
-        var distanceTraveledY = Mathf.Abs(lastPos.y - transform.position.y);
-
-        //this function makes the tile, occupied by a unity (enemy or hero). this means nothing can spawn there
+        //this function makes the tile, occupied by a unit (enemy or hero). this means nothing can spawn there
         //if the tile selected is occupied, it'll not set anything to that tile
         if (unit.occupiedTile != null) unit.occupiedTile.occupiedUnit = null;
 
         //if the distance between the tile you selected and the range your player can travel is too big
         // the player wont walk
-        if (lastPos != null)
+
+        if (walkable && !unit.moved)
         {
-            if (walkable && !unit.moved)
-            {
-                UnitManager.Instance.SetSelectedEnemy(null);
-                unit.transform.position = transform.position;
-                occupiedUnit = unit;
-                unit.occupiedTile = this;
+            UnitManager.Instance.SetSelectedEnemy(null);
+            unit.transform.position = transform.position;
+            occupiedUnit = unit;
+            unit.occupiedTile = this;
 
-                //set moved to true so the hero cannot move anymore
-                unit.moved = true;
-                //print("player can spawn here");
-            }
-
+            //set moved to true so the hero cannot move anymore
+            unit.moved = true;
+            //print("player can spawn here");
         }
+
     }
 }

@@ -7,6 +7,9 @@ public class UnitManager : MonoBehaviour
 {
     public static UnitManager Instance;
 
+    [SerializeField] private float enemCount = 1;
+    private Tile _enemyTile;
+    private BaseEnemy _enemy;
     private List<ScriptableUnit> _units;
     private List<BaseEnemy> _selectedEnemies;
     public BaseHero selectedHero;
@@ -15,7 +18,6 @@ public class UnitManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        _selectedEnemies = new List<BaseEnemy>();
         _units = Resources.LoadAll<ScriptableUnit>("Units").ToList();
     }
     public void SpawnHeroes()
@@ -33,8 +35,7 @@ public class UnitManager : MonoBehaviour
     }
     public void SpawnEnemies()
     {
-        var enemyCount = 1;
-        for (int i = 0; i < enemyCount; i++)
+        for (int i = 0; i < enemCount; i++)
         {
             var randomPrefab = GetRandomUnit<BaseEnemy>(Faction.Enemy);
             var spawnedEnemy = Instantiate(randomPrefab);
@@ -59,25 +60,27 @@ public class UnitManager : MonoBehaviour
     public void SetSelectedEnemy(BaseEnemy Enemy)
     {
         selectedEnemy = Enemy;
+        print("selected enemy " + Enemy);
         MenuManager.Instance.ShowSelectedEnemy(Enemy);
     }
 
     public void FindEnemy()
     {
-        var GetEnemyTile = LevelGenerator.Instance.FindEnemy();
-        var enemy = GetEnemyTile.occupiedUnit.GetComponent<BaseEnemy>();
-        _selectedEnemies.Add(enemy);
+        _selectedEnemies = new List<BaseEnemy>();
+        for (int i = 0; i < enemCount; i++)
+        {
+            _enemyTile = LevelGenerator.Instance.FindEnemy();
+            _enemy = _enemyTile.occupiedUnit.GetComponent<BaseEnemy>();
+            _selectedEnemies.Add(_enemy);
+        }
 
         for (int i = 0; i < _selectedEnemies.Count; i++)
         {
-            _selectedEnemies[i].GetComponent<BaseEnemy>().test();
+            print(_selectedEnemies[i]);
+            var wait = new WaitForSeconds(1);
+            _selectedEnemies[i].moved = false;
+            //geef de tile waar de enemy op staat mee en de enemy zelf.
+            _selectedEnemies[i].GetComponent<BaseEnemy>().EnemyTurn(_selectedEnemies[i].occupiedTile, _selectedEnemies[i]);
         }
-        enemy.moved = false;
-        if (GetEnemyTile.occupiedUnit.faction == Faction.Enemy)
-        {
-            enemy.EnemyTurn(GetEnemyTile, enemy);
-        }
-        _selectedEnemies.Clear();
-        print("list count "+_selectedEnemies.Count);
     }
 }
