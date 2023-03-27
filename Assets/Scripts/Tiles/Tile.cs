@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public abstract class Tile : MonoBehaviour
     [SerializeField] protected SpriteRenderer Renderer;
     [SerializeField] private GameObject HighLight, outOfRangeHighlight;
     [SerializeField] private bool IsWalkable;
+    [NonSerialized] public bool selected = false;
     public string tileName;
 
     public BaseUnit occupiedUnit;
@@ -40,20 +42,6 @@ public abstract class Tile : MonoBehaviour
         {
             HighLight.SetActive(true);
         }
-
-        //werkt nog niet de tiles worden niet gelaten zien.
-        // if (enemy != null)
-        // {
-        //     if (!enemy.inRange(transform.position))
-        //     {
-        //         outOfRangeHighlight.SetActive(true);
-        //     }
-        //     else
-        //     {
-        //         HighLight.SetActive(false);
-        //     }
-        // }
-
 
         MenuManager.Instance.ShowTileInfo(this);
     }
@@ -145,6 +133,7 @@ public abstract class Tile : MonoBehaviour
         //this function makes the tile, occupied by a unit (enemy or hero). this means nothing can spawn there
         //if the tile selected is occupied, it'll not set anything to that tile
         if (unit.occupiedTile != null) unit.occupiedTile.occupiedUnit = null;
+        unit.occupiedTile.selected = false;
 
         //if the distance between the tile you selected and the range your player can travel is too big
         // the player wont walk

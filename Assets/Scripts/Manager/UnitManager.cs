@@ -18,7 +18,7 @@ public class UnitManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        _units = Resources.LoadAll<ScriptableUnit>("Units").ToList();
+        _units = Resources.LoadAll<ScriptableUnit>("SCriptableUnits").ToList();
     }
     public void SpawnHeroes()
     {
@@ -60,7 +60,6 @@ public class UnitManager : MonoBehaviour
     public void SetSelectedEnemy(BaseEnemy Enemy)
     {
         selectedEnemy = Enemy;
-        print("selected enemy " + Enemy);
         MenuManager.Instance.ShowSelectedEnemy(Enemy);
     }
 
@@ -70,17 +69,16 @@ public class UnitManager : MonoBehaviour
         for (int i = 0; i < enemCount; i++)
         {
             _enemyTile = LevelGenerator.Instance.FindEnemy();
+            _enemyTile.selected = true;
             _enemy = _enemyTile.occupiedUnit.GetComponent<BaseEnemy>();
             _selectedEnemies.Add(_enemy);
         }
 
         for (int i = 0; i < _selectedEnemies.Count; i++)
         {
-            print(_selectedEnemies[i]);
-            var wait = new WaitForSeconds(1);
             _selectedEnemies[i].moved = false;
+            _selectedEnemies[i].EnemyTurn(_selectedEnemies[i].occupiedTile, _selectedEnemies[i]);
             //geef de tile waar de enemy op staat mee en de enemy zelf.
-            _selectedEnemies[i].GetComponent<BaseEnemy>().EnemyTurn(_selectedEnemies[i].occupiedTile, _selectedEnemies[i]);
         }
     }
 }

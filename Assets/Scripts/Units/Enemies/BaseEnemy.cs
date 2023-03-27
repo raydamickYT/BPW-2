@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BaseEnemy : BaseUnit
 {
     public static BaseEnemy instance;
+    [NonSerialized] public bool found = false;
 
     private void Awake()
     {
@@ -13,11 +15,9 @@ public class BaseEnemy : BaseUnit
 
     public void EnemyTurn(Tile enemyTile, BaseEnemy enemy)
     {
-        print("enemyTIle" + enemyTile + "enemy" + enemy);
         UnitManager.Instance.SetSelectedEnemy((BaseEnemy)enemyTile.occupiedUnit);
         var walkTile = LevelGenerator.Instance.GetEnemyWalkTile(moveRange, transform);
         walkTile.SetEnemy(UnitManager.Instance.selectedEnemy);
-        print("enem loopt");
 
         //enemy.enemyAttack();
         GameManager.Instance.UpdateGameState(GameState.HeroesTurn);

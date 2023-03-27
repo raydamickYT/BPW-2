@@ -12,5 +12,5 @@ public class ScriptableUnit : ScriptableObject
 public enum Faction {
     Hero = 0,
     Enemy = 1,
-    Item = 2
+    Items = 2
 }
