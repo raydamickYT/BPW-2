@@ -857,6 +857,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2871006563560446151}
   - component: {fileID: 3697378100302103408}
+  - component: {fileID: 5445134754444869029}
   - component: {fileID: 5256037999698331855}
   m_Layer: 0
   m_Name: Entry 2
@@ -906,6 +907,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5445134754444869029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7074650321135813871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101472b61501d7d4ba2f5a0177d78ac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpDistance: {x: 3, y: 0}
 --- !u!50 &5256037999698331855
 Rigidbody2D:
   serializedVersion: 4
@@ -937,6 +951,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7323908200912737456}
   - component: {fileID: 8188233052541123640}
+  - component: {fileID: 1287911892267859074}
   - component: {fileID: 5690963574474971896}
   m_Layer: 0
   m_Name: Entry
@@ -986,6 +1001,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1287911892267859074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7826386998722216458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101472b61501d7d4ba2f5a0177d78ac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpDistance: {x: 0, y: 3}
 --- !u!50 &5690963574474971896
 Rigidbody2D:
   serializedVersion: 4

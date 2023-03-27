@@ -7,14 +7,15 @@ TagManager:
   - SpawnPoint
   - Rooms
   - Tile
+  - EntryPoints
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Rooms
   - Water
   - UI
-  - Tiles
+  - EntryPoints
   - 
   - 
   - 

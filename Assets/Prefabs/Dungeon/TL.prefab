@@ -824,6 +824,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1484524139973453595}
   - component: {fileID: 6281054958388816684}
+  - component: {fileID: 8620985528880992297}
   - component: {fileID: 8802162816744459163}
   m_Layer: 0
   m_Name: Spawn Point (1)
@@ -873,6 +874,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8620985528880992297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3601810253117810634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101472b61501d7d4ba2f5a0177d78ac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpDistance: {x: 3, y: 0}
 --- !u!50 &8802162816744459163
 Rigidbody2D:
   serializedVersion: 4
@@ -937,6 +951,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4273993525195053286}
   - component: {fileID: 5495101118313557909}
+  - component: {fileID: 7970244943162351074}
   - component: {fileID: 6818401211577877817}
   m_Layer: 0
   m_Name: Spawn Point (2)
@@ -986,6 +1001,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7970244943162351074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7645703624468855317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 101472b61501d7d4ba2f5a0177d78ac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpDistance: {x: 0, y: -3}
 --- !u!50 &6818401211577877817
 Rigidbody2D:
   serializedVersion: 4

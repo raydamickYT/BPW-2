@@ -37,7 +37,7 @@ public class BaseEnemy : BaseUnit
         var walkTile = LevelGenerator.Instance.GetEnemyWalkTile(moveRange, transform);
         walkTile.SetEnemy(UnitManager.Instance.selectedEnemy);
 
-        //enemy.enemyAttack();
+        enemy.enemyAttack();
         GameManager.Instance.UpdateGameState(GameState.HeroesTurn);
     }
 

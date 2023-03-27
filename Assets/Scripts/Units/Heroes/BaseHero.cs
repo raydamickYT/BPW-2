@@ -6,7 +6,7 @@ public class BaseHero : BaseUnit
 {
     public static BaseHero instance;
     public GameObject currentRoom;
-    [SerializeField] private LayerMask layerMask;
+    public bool _movedRooms = false;
 
     private void Awake()
     {
@@ -52,10 +52,34 @@ public class BaseHero : BaseUnit
         //print($"spawnpoint position {other.transform.position} and name {other.tag}");
         if (other.tag == "EntryPoints")
         {
+            print("test");
+            _movedRooms = true;
             var test = other.GetComponentInParent<AddRoom>();
             //verander de current room naar de room waar we naartoe gaan.
             currentRoom = LevelGenerator.Instance.rooms[test.GetCurrentRoom()];
-            Vector2 newPos = new Vector2(2,2);
+
+            //moving the player
+            Vector2 playerPos = transform.position;
+            playerPos += other.GetComponent<MoveToNewRoom>().jumpDistance;
+            transform.position = playerPos;
+            if (occupiedTile != null) occupiedTile.occupiedUnit = null;
+            MainCam.instance.MoveCamPos(currentRoom.transform.position);
+        }
+        //als we gemoved zijn dan moeten we de occupied tile veranderen.
+        if (other.tag == "Tile" && _movedRooms)
+        {
+            if (other.GetComponent<Tile>() == null)
+            {
+                print("werkt niet");
+            }
+            else
+            {
+                other.GetComponent<Tile>().occupiedUnit = this;
+                occupiedTile = other.GetComponent<Tile>();
+                //_movedRooms = false;
+                moved = false;
+
+            }
         }
     }
 }
