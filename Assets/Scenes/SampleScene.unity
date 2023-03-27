@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621595232b7cc224089bf4f6dc8eaa56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemCount: 3
+  enemCount: 1
   selectedHero: {fileID: 0}
   selectedEnemy: {fileID: 0}
 --- !u!1 &165209235
@@ -279,7 +279,7 @@ Transform:
   - {fileID: 640289960}
   - {fileID: 59784584}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &191872332
 PrefabInstance:
@@ -360,9 +360,41 @@ PrefabInstance:
       propertyPath: openingDirection
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1555351846394584187, guid: 10c65f0c164d2e04e9c3daf97304609a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2341294394665928663, guid: 10c65f0c164d2e04e9c3daf97304609a, type: 3}
+      propertyPath: m_TagString
+      value: EntryPoints
+      objectReference: {fileID: 0}
+    - target: {fileID: 3219253942105478285, guid: 10c65f0c164d2e04e9c3daf97304609a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3616007738267525660, guid: 10c65f0c164d2e04e9c3daf97304609a, type: 3}
+      propertyPath: m_TagString
+      value: EntryPoints
+      objectReference: {fileID: 0}
     - target: {fileID: 4838449816671086953, guid: 10c65f0c164d2e04e9c3daf97304609a, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4969346452223608677, guid: 10c65f0c164d2e04e9c3daf97304609a, type: 3}
+      propertyPath: m_TagString
+      value: EntryPoints
+      objectReference: {fileID: 0}
+    - target: {fileID: 5850512877348108672, guid: 10c65f0c164d2e04e9c3daf97304609a, type: 3}
+      propertyPath: m_TagString
+      value: EntryPoints
+      objectReference: {fileID: 0}
+    - target: {fileID: 6878797832156430760, guid: 10c65f0c164d2e04e9c3daf97304609a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8657588945562733916, guid: 10c65f0c164d2e04e9c3daf97304609a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8815802810642495145, guid: 10c65f0c164d2e04e9c3daf97304609a, type: 3}
       propertyPath: m_IsActive
@@ -497,6 +529,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -568,8 +601,20 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 642ddf88370fc164db297e0019259be4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &973916761
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,7 +645,7 @@ Transform:
   m_Children:
   - {fileID: 1503073100}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1007601625
 GameObject:
@@ -1650,5 +1695,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
