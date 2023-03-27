@@ -360,11 +360,16 @@ PrefabInstance:
       propertyPath: openingDirection
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4838449816671086953, guid: 10c65f0c164d2e04e9c3daf97304609a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8815802810642495145, guid: 10c65f0c164d2e04e9c3daf97304609a, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4838449816671086953, guid: 10c65f0c164d2e04e9c3daf97304609a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 10c65f0c164d2e04e9c3daf97304609a, type: 3}
 --- !u!1 &305478177
 GameObject:

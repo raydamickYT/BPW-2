@@ -105,6 +105,9 @@ MonoBehaviour:
   outOfRangeHighlight: {fileID: 3058783476858524797}
   IsWalkable: 0
   tileName: Mountain
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 64
   occupiedUnit: {fileID: 0}
 --- !u!61 &-3790309023994649938
 BoxCollider2D:

@@ -13,6 +13,24 @@ public class BaseEnemy : BaseUnit
         instance = this;
     }
 
+    private void Start()
+    {
+        for (int i = 0; i < LevelGenerator.Instance.rooms.Count; i++)
+        {
+            var currentRoom = LevelGenerator.Instance.rooms[i].transform.position;
+            float currentRoomMinX = currentRoom.x - 4f;
+            float currentRoomMaxX = currentRoom.x + 4f;
+            float currentRoomMinY = currentRoom.y - 4f;
+            float currentRoomMaxY = currentRoom.y + 4;
+            if (transform.position.x < currentRoomMaxX && transform.position.x > currentRoomMinX && transform.position.y < currentRoomMaxY && transform.position.y > currentRoomMinY)
+            {
+                LevelGenerator.Instance.rooms[i].GetComponent<AddRoom>().enemiesInRoom.Add(this);
+                break;
+            }
+        }
+    }
+
+
     public void EnemyTurn(Tile enemyTile, BaseEnemy enemy)
     {
         UnitManager.Instance.SetSelectedEnemy((BaseEnemy)enemyTile.occupiedUnit);

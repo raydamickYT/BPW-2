@@ -189,6 +189,9 @@ MonoBehaviour:
   outOfRangeHighlight: {fileID: 462172298365050033}
   IsWalkable: 1
   tileName: Grass
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 64
   occupiedUnit: {fileID: 0}
   BaseColor: {r: 0.3423518, g: 0.9339623, b: 0.24142039, a: 1}
   OffsetColor: {r: 0.28487682, g: 0.7830189, b: 0.20240295, a: 1}

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f91fb75b4cc5c4f9d197bee5095dc0, type: 3}
   m_Name: Items
   m_EditorClassIdentifier: 
-  faction: 0
+  faction: 2
   unitPrefab: {fileID: 0}

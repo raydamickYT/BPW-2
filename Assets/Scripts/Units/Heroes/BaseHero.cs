@@ -6,14 +6,13 @@ public class BaseHero : BaseUnit
 {
     public static BaseHero instance;
     public GameObject currentRoom;
+    [SerializeField] private LayerMask layerMask;
 
     private void Awake()
     {
         instance = this;
         //this'll determine where the player spawns.
         currentRoom = LevelGenerator.Instance.rooms[0];
-        //print("Current Room Name: " + currentRoom);
-        //print("current room Transform: " + currentRoom.transform.position);
     }
     public void StartHeroTurn()
     {
@@ -45,6 +44,18 @@ public class BaseHero : BaseUnit
         else
         {
             return false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        //print($"spawnpoint position {other.transform.position} and name {other.tag}");
+        if (other.tag == "EntryPoints")
+        {
+            var test = other.GetComponentInParent<AddRoom>();
+            //verander de current room naar de room waar we naartoe gaan.
+            currentRoom = LevelGenerator.Instance.rooms[test.GetCurrentRoom()];
+            Vector2 newPos = new Vector2(2,2);
         }
     }
 }

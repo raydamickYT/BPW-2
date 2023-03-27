@@ -7,11 +7,10 @@ public class UnitManager : MonoBehaviour
 {
     public static UnitManager Instance;
 
-    [SerializeField] private float enemCount = 1;
+    public float enemCount = 1;
     private Tile _enemyTile;
     private BaseEnemy _enemy;
     private List<ScriptableUnit> _units;
-    private List<BaseEnemy> _selectedEnemies;
     public BaseHero selectedHero;
     public BaseEnemy selectedEnemy;
 
@@ -65,20 +64,12 @@ public class UnitManager : MonoBehaviour
 
     public void FindEnemy()
     {
-        _selectedEnemies = new List<BaseEnemy>();
-        for (int i = 0; i < enemCount; i++)
+        var enemiesInCurrentRoom = BaseHero.instance.currentRoom.GetComponent<AddRoom>().enemiesInRoom;
+        for (int i = 0; i < enemiesInCurrentRoom.Count; i++)
         {
-            _enemyTile = LevelGenerator.Instance.FindEnemy();
-            _enemyTile.selected = true;
-            _enemy = _enemyTile.occupiedUnit.GetComponent<BaseEnemy>();
-            _selectedEnemies.Add(_enemy);
-        }
-
-        for (int i = 0; i < _selectedEnemies.Count; i++)
-        {
-            _selectedEnemies[i].moved = false;
-            _selectedEnemies[i].EnemyTurn(_selectedEnemies[i].occupiedTile, _selectedEnemies[i]);
-            //geef de tile waar de enemy op staat mee en de enemy zelf.
+            enemiesInCurrentRoom[i].moved = false;
+            //get the enemies to move
+            enemiesInCurrentRoom[i].EnemyTurn(enemiesInCurrentRoom[i].occupiedTile, enemiesInCurrentRoom[i]);
         }
     }
 }

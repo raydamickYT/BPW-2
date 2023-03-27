@@ -12,6 +12,7 @@ public abstract class Tile : MonoBehaviour
     [SerializeField] private bool IsWalkable;
     [NonSerialized] public bool selected = false;
     public string tileName;
+    [SerializeField] private LayerMask _layerMask;
 
     public BaseUnit occupiedUnit;
     //walkable is true if walkable is true and there is no unit on the tile (occupied unit == null)
@@ -151,4 +152,6 @@ public abstract class Tile : MonoBehaviour
         }
 
     }
+
+
 }

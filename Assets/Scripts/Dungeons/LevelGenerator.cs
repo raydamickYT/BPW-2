@@ -97,22 +97,6 @@ public class LevelGenerator : MonoBehaviour
         //return Opslag.Where(t => t.Key.x < 3.5 && t.Key.x > 1 && t.Key.y > 1 && t.Key.y < 8.6 && t.Value.walkable).OrderBy(t => Random.value).First().Value;
     }
 
-    public Tile FindEnemy()
-    {
-        //script will find parametres for current room and checks within those bounds if there is an enemy unity in there.
-        var currentRoom = BaseHero.instance.currentRoom;
-        float currentRoomMinX = currentRoom.transform.position.x - 4f;
-        float currentRoomMaxX = currentRoom.transform.position.x + 4f;
-        float currentRoomMinY = currentRoom.transform.position.y - 4f;
-        float currentRoomMaxY = currentRoom.transform.position.y + 4;
-
-        var occupied = Tile.instance.occupiedUnit;
-        var enemyPos = Opslag.Where(t => t.Key.x < currentRoomMaxX && t.Key.x > currentRoomMinX && t.Key.y > currentRoomMinY && t.Key.y < currentRoomMaxY && t.Value.occupiedUnit != null && t.Value.occupiedUnit.faction == Faction.Enemy).First().Value;
-
-        //var enemyPos = Opslag.Where(t => t.Key.x < 9 && t.Key.x > 1 && t.Key.y > 1 && t.Key.y < 9 && t.Value.occupiedUnit != null && t.Value.occupiedUnit.faction == Faction.Enemy).First().Value;
-
-        return enemyPos;
-    }
     public Tile GetEnemyWalkTile(float walkRange, Transform enemPos)
     {
         float currentRoomMinX = enemPos.position.x - walkRange;
