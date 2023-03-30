@@ -138,7 +138,6 @@ public abstract class Tile : MonoBehaviour
 
         //if the distance between the tile you selected and the range your player can travel is too big
         // the player wont walk
-
         if (walkable && !unit.moved)
         {
             UnitManager.Instance.SetSelectedEnemy(null);

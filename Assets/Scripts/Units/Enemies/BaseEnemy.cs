@@ -29,7 +29,15 @@ public class BaseEnemy : BaseUnit
             }
         }
     }
+    public void Health()
+    {
+        if (currentHealth <= 0)
+        {
+            Destroy(this.gameObject);
+            BaseHero.instance.currentRoom.GetComponent<AddRoom>().enemiesInRoom.Remove(this);
 
+        }
+    }
 
     public void EnemyTurn(Tile enemyTile, BaseEnemy enemy)
     {

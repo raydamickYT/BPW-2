@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class NextRoomTile : MonoBehaviour
 {
-    [SerializeField] private GameObject HighLight;
+    [SerializeField] private GameObject _highlight;
+    [SerializeField] private Vector2 jumpDistance;
     private void OnMouseEnter() {
-        HighLight.SetActive(true);
+        _highlight.SetActive(true);
+    }
+    private void OnMouseDown() {
+        BaseHero.instance.MoveRooms(jumpDistance);
+    }
+
+    private void OnMouseExit() {
+        _highlight.SetActive(false);
     }
 }

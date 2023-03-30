@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour
 {
     public static MenuManager Instance;
-    [SerializeField] private GameObject SelectedHeroObject, TileInfoObject, TileUnitObject;
+    [SerializeField] private GameObject SelectedHeroObject, TileInfoObject, TileUnitObject, confirmation;
 
     private void Awake()
     {
@@ -58,5 +58,11 @@ public class MenuManager : MonoBehaviour
         //if hero is selected, show the name of the hero and the stats
         SelectedHeroObject.GetComponentInChildren<Text>().text = Enemy.unitName;
         SelectedHeroObject.SetActive(true);
+    }
+    public void showConfirmation(){
+        confirmation.SetActive(true);
+    }
+    public void hideConfirmation(){
+        confirmation.SetActive(false);
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 public class AddRoom : MonoBehaviour
 {
     public static AddRoom instance;
+    [HideInInspector] public bool unlocked = false;
 
     private LevelGenerator templates;
     public List<BaseEnemy> enemiesInRoom;
@@ -28,11 +29,12 @@ public class AddRoom : MonoBehaviour
             float currentRoomMaxX = currentRoom.x + 4f;
             float currentRoomMinY = currentRoom.y - 4f;
             float currentRoomMaxY = currentRoom.y + 4;
-            if(transform.position.x < currentRoomMaxX && transform.position.x > currentRoomMinX && transform.position.y < currentRoomMaxY && transform.position.y > currentRoomMinY){
+            if (transform.position.x < currentRoomMaxX && transform.position.x > currentRoomMinX && transform.position.y < currentRoomMaxY && transform.position.y > currentRoomMinY)
+            {
                 room = i;
                 break;
-            } 
-        } 
+            }
+        }
         return room;
     }
 

@@ -5,4 +5,5 @@ using UnityEngine;
 public class MoveToNewRoom : MonoBehaviour
 {
     public Vector2 jumpDistance;
+    
 }

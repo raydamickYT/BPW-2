@@ -11,7 +11,13 @@ public class endTurn : MonoBehaviour
     {
         if (GameManager.Instance.gameState == GameState.HeroesTurn)
         {
-            GameManager.Instance.UpdateGameState(GameState.EnemiesTurn);
+            if (BaseHero.instance.currentRoom.GetComponent<AddRoom>().enemiesInRoom.Count == 0)
+            {
+                GameManager.Instance.UpdateGameState(GameState.HeroesTurn);
+                UnitManager.Instance.SetSelectedHero(null);
+            }else{
+                GameManager.Instance.UpdateGameState(GameState.EnemiesTurn);
+            }
         }
     }
 }
