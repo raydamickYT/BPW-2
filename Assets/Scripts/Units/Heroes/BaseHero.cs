@@ -12,6 +12,7 @@ public class BaseHero : BaseUnit
     private void Awake()
     {
         instance = this;
+        currentHealth = health;
         //this'll determine where the player spawns.
         currentRoom = LevelGenerator.Instance.rooms[0];
     }
@@ -35,6 +36,7 @@ public class BaseHero : BaseUnit
     }
     public void Health()
     {
+        healthBar.fillAmount = (float)currentHealth / (float)health;
         if (currentHealth <= 0)
         {
             Destroy(this.gameObject);

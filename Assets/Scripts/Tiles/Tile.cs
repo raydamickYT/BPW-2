@@ -103,6 +103,11 @@ public abstract class Tile : MonoBehaviour
         occupiedUnit = unit;
         unit.occupiedTile = this;
     }
+    public void SetItem(BaseItem unit)
+    {
+        //place an item
+        unit.transform.position = transform.position;
+    }
 
     public void SetHero(BaseUnit unit)
     {

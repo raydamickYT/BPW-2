@@ -33,7 +33,12 @@ public class BaseEnemy : BaseUnit
     {
         if (currentHealth <= 0)
         {
+            //spawn een random item
+            UnitManager.Instance.spawnItem(occupiedTile);
             Destroy(this.gameObject);
+            var waittime = 2 - Time.deltaTime;
+            //if (waittime <= 0)
+            
             BaseHero.instance.currentRoom.GetComponent<AddRoom>().enemiesInRoom.Remove(this);
 
         }
@@ -51,13 +56,12 @@ public class BaseEnemy : BaseUnit
 
     public void enemyAttack()
     {
-        var temp = FindObjectOfType<BaseHero>();
-        var difference = temp.transform.position - transform.position;
+        var findHero = FindObjectOfType<BaseHero>();
+        var difference = findHero.transform.position - transform.position;
         if (Mathf.Abs(difference.x) <= attackRange && Mathf.Abs(difference.y) <= attackRange)
         {
-            temp.health -= attackDmg;
-            print(temp.health);
-            temp.Health();
+            findHero.currentHealth -= attackDmg;
+            findHero.Health();
         }
     }
 

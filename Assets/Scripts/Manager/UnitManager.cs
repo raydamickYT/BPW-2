@@ -44,9 +44,22 @@ public class UnitManager : MonoBehaviour
         }
     }
 
+    public void spawnItem(Tile enemyTile)
+    {
+        var randomPrefab = GetRandomItem<BaseItem>(Faction.Items);
+        var spawnedItem = Instantiate(randomPrefab);
+        var randomSpawnTile = enemyTile;
+
+        randomSpawnTile.SetItem(spawnedItem);
+    }
+
     private T GetRandomUnit<T>(Faction faction) where T : BaseUnit
     {
         return (T)_units.Where(u => u.faction == faction).OrderBy(o => Random.value).First().unitPrefab;
+    }
+    private T GetRandomItem<T>(Faction faction) where T : BaseItem
+    {
+        return (T)_units.Where(u => u.faction == faction).OrderBy(o => Random.value).First().ItemPrefab;
     }
 
     public void SetSelectedHero(BaseHero Hero)
