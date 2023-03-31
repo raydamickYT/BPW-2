@@ -6,6 +6,12 @@ public class ItemController : MonoBehaviour
 {
     public ScriptableItems item;
 
+    public void removeItem(){
+        ItemManager.instance.Remove(item);
+
+        Destroy(gameObject);
+    }
+
     public void addItem(ScriptableItems newItem)
     {
         item = newItem;
@@ -29,5 +35,6 @@ public class ItemController : MonoBehaviour
             default:
                 break;
         }
+        removeItem();
     }
 }

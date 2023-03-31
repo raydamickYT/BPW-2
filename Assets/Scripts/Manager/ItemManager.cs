@@ -65,6 +65,7 @@ public class ItemManager : MonoBehaviour
     }
 
     public void setInventoryItems(){
+            print("test");
         inventoryItems = itemContent.GetComponentsInChildren<ItemController>();
 
         for (int i = 0; i < items.Count; i++)

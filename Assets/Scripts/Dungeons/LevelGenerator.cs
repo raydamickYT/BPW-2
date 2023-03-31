@@ -29,7 +29,10 @@ public class LevelGenerator : MonoBehaviour
             {
                 if (i == rooms.Count - 1)
                 {
-                    Instantiate(boss, rooms[i].transform.position, Quaternion.identity);
+                    if (boss != null)
+                    {
+                        Instantiate(boss, rooms[i].transform.position, Quaternion.identity);
+                    }
                     spawnedBoss = true;
                     GameManager.Instance.UpdateGameState(GameState.SpawnHeroes);
                 }

@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour
             case GameState.EnemiesTurn:
                 UnitManager.Instance.FindEnemy();
                 break;
+                case GameState.Paused:
+                MenuManager.Instance.showMenu();
+                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
 
@@ -52,5 +55,6 @@ public enum GameState
     SpawnHeroes = 1,
     SpawnEnemies = 2,
     HeroesTurn = 3,
-    EnemiesTurn = 4
+    EnemiesTurn = 4,
+    Paused = 5
 }

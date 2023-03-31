@@ -128,13 +128,15 @@ public abstract class Tile : MonoBehaviour
         {
             if (walkable && !unit.moved)
             {
-                UnitManager.Instance.SetSelectedHero(null);
                 unit.transform.position = transform.position;
                 occupiedUnit = unit;
                 unit.occupiedTile = this;
 
                 //set moved to true so the hero cannot move anymore
                 unit.moved = true;
+                //volgende keer een ability controller of zoiets maken, dit is zou niet werken met meerdere heroes
+                UnitManager.Instance.updateText();
+                UnitManager.Instance.SetSelectedHero(null);
             }
         }
     }

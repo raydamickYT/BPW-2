@@ -21,6 +21,7 @@ public class BaseHero : BaseUnit
     {
         //reset all bools at the start of the turn
         moved = false;
+        UnitManager.Instance.updateText();
         currentRoom.gameObject.GetComponent<AddRoom>().unlocked = true;
     }
 
@@ -30,6 +31,7 @@ public class BaseHero : BaseUnit
         {
             print(extraDMGTurns);
             extraDMGTurns--;
+            UnitManager.Instance.updateText();
             if (extraDMGTurns == 0)
             {
                 dmgBoost = false;
@@ -92,6 +94,7 @@ public class BaseHero : BaseUnit
         //print($"spawnpoint position {other.transform.position} and name {other.tag}");
         _movedRooms = true;
         moved = false;
+        UnitManager.Instance.updateText();
 
 
         //moving the player
@@ -104,7 +107,7 @@ public class BaseHero : BaseUnit
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        //print($"spawnpoint position {other.transform.position} and name {other.tag}");
+        //check of we door kunnen naar de volgende kamer
         if (other.tag == "EntryPoints")
         {
             var NextRoom = other.GetComponentInParent<AddRoom>();
@@ -122,6 +125,7 @@ public class BaseHero : BaseUnit
 
                     //zet de jump distance
                     jumpDistance = other.GetComponent<MoveToNewRoom>().jumpDistance;
+                    other.GetComponent<MoveToNewRoom>().ifUnlocked();
                 }
             }
             else
@@ -144,6 +148,7 @@ public class BaseHero : BaseUnit
                 occupiedTile = other.GetComponent<Tile>();
                 _movedRooms = false;
                 moved = false;
+                UnitManager.Instance.updateText();
             }
         }
     }

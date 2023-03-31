@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TMPro;
 
 public class UnitManager : MonoBehaviour
 {
     public static UnitManager Instance;
+    public GameObject movedText;
+    public GameObject dmgBoostText;
 
     public float enemCount = 1;
     private Tile _enemyTile;
@@ -19,6 +22,30 @@ public class UnitManager : MonoBehaviour
         Instance = this;
         _units = Resources.LoadAll<ScriptableUnit>("SCriptableUnits").ToList();
     }
+
+    public void updateText()
+    {
+        if (BaseHero.instance.dmgBoost)
+        {
+            dmgBoostText.gameObject.SetActive(true);
+            //dmgBoostText.GetComponent<TextMeshPro>().text = $"{BaseHero.instance.extraDMGTurns} :DmgBoost";
+        }
+        else
+        {
+            dmgBoostText.gameObject.SetActive(false);
+        }
+
+
+        if (BaseHero.instance.moved)
+        {
+            movedText.gameObject.SetActive(true);
+        }
+        else
+        {
+            movedText.gameObject.SetActive(false);
+        }
+    }
+
     public void SpawnHeroes()
     {
         var heroCount = 1;
@@ -44,8 +71,6 @@ public class UnitManager : MonoBehaviour
         }
     }
 
-
-
     private T GetRandomUnit<T>(Faction faction) where T : BaseUnit
     {
         return (T)_units.Where(u => u.faction == faction).OrderBy(o => Random.value).First().unitPrefab;
@@ -60,7 +85,6 @@ public class UnitManager : MonoBehaviour
         selectedHero = Hero;
         MenuManager.Instance.ShowSelectedHero(Hero);
     }
-
 
     public void SetSelectedEnemy(BaseEnemy Enemy)
     {

@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour
 {
     public static MenuManager Instance;
-    [SerializeField] private GameObject SelectedHeroObject, TileInfoObject, TileUnitObject, confirmation;
+    [SerializeField] private GameObject SelectedHeroObject, TileInfoObject, TileUnitObject, confirmation, pauseMenu;
+    public bool gamePaused = false;
 
     private void Awake()
     {
@@ -46,7 +47,7 @@ public class MenuManager : MonoBehaviour
         SelectedHeroObject.GetComponentInChildren<Text>().text = Hero.unitName;
         SelectedHeroObject.SetActive(true);
     }
-        public void ShowSelectedEnemy(BaseEnemy Enemy)
+    public void ShowSelectedEnemy(BaseEnemy Enemy)
     {
         if (Enemy == null)
         {
@@ -59,10 +60,32 @@ public class MenuManager : MonoBehaviour
         SelectedHeroObject.GetComponentInChildren<Text>().text = Enemy.unitName;
         SelectedHeroObject.SetActive(true);
     }
-    public void showConfirmation(){
+    public void showConfirmation()
+    {
         confirmation.SetActive(true);
     }
-    public void hideConfirmation(){
+    public void hideConfirmation()
+    {
         confirmation.SetActive(false);
+    }
+    public void showMenu()
+    {
+        pauseMenu.SetActive(true);
+        gamePaused = true;
+        Time.timeScale = 0;
+        print(Time.timeScale);
+    }
+
+    public void hideMenu()
+    {
+        GameManager.Instance.UpdateGameState(GameState.HeroesTurn);
+        pauseMenu.SetActive(false);
+        gamePaused = true;
+        Time.timeScale = 1;
+    }
+
+    public void retry()
+    {
+
     }
 }

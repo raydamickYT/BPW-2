@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   faction: 2
   unitPrefab: {fileID: 0}
-  ItemPrefab: {fileID: 4543515818378904286, guid: 47f018e028ea02f4a9dbaccea8322e9c, type: 3}
+  ItemPrefab: {fileID: 4543515818378904286, guid: 2e09157906269294abf32b59a10308b9, type: 3}
   icon: {fileID: 3024413351725788185, guid: 234ac5994eba3364db58a97dda7c83a9, type: 3}
   id: 1
   value: 10

@@ -19,7 +19,7 @@ public class RoomSpawner : MonoBehaviour
     public float waitTime = 4f;
 
     //grid spawner
-    
+
     #endregion
 
     private void Awake()
@@ -55,7 +55,15 @@ public class RoomSpawner : MonoBehaviour
             {
                 // Need to spawn a room with a LEFT door.
                 Rand = Random.Range(0, Templates.leftRooms.Length);
-                Instantiate(Templates.leftRooms[Rand], transform.position, Templates.leftRooms[Rand].transform.rotation);
+                if (Rand == 0)
+                {
+//                    print("this is empty");
+                }
+                else
+                {
+
+                    Instantiate(Templates.leftRooms[Rand], transform.position, Templates.leftRooms[Rand].transform.rotation);
+                }
             }
             else if (openingDirection == 4)
             {
