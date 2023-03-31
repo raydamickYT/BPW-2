@@ -105,6 +105,10 @@ public class LevelGenerator : MonoBehaviour
         float currentRoomMaxY = enemPos.position.y + walkRange;
 
         var enemyPos = Opslag.Where(t => t.Key.x < currentRoomMaxX && t.Key.x > currentRoomMinX && t.Key.y > currentRoomMinY && t.Key.y < currentRoomMaxY && t.Value.walkable && !t.Value.selected).OrderBy(t => Random.value).First().Value;
+        if (enemPos == null)
+        {
+            return null;
+        }
         return enemyPos;
 
         //var enemyPos = Opslag.Where(t => t.Key.x < currentRoomMaxX && t.Key.x > currentRoomMinX && t.Key.y > currentRoomMinY && t.Key.y < currentRoomMaxY && t.Value.walkable).OrderBy(t => Random.value).First().Value;

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
     public GameState gameState;
+    [HideInInspector] public float PlayerTurns = 0;
     private void Awake()
     {
         Instance = this;
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     {
         UpdateGameState(GameState.GenerateGrid);
     }
+
 
     public void UpdateGameState(GameState newState)
     {

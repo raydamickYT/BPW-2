@@ -10,7 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65f91fb75b4cc5c4f9d197bee5095dc0, type: 3}
-  m_Name: Items
+  m_Name: EmptyItem
   m_EditorClassIdentifier: 
   faction: 2
   unitPrefab: {fileID: 0}
+  ItemPrefab: {fileID: 4543515818378904286, guid: 47f018e028ea02f4a9dbaccea8322e9c, type: 3}
+  icon: {fileID: 0}
+  id: 3
+  value: 0
+  itemName: EmptyItem

@@ -8,6 +8,7 @@ TagManager:
   - Rooms
   - Tile
   - EntryPoints
+  - Item
   layers:
   - Default
   - TransparentFX

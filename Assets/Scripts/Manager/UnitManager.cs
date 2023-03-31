@@ -44,14 +44,7 @@ public class UnitManager : MonoBehaviour
         }
     }
 
-    public void spawnItem(Tile enemyTile)
-    {
-        var randomPrefab = GetRandomItem<BaseItem>(Faction.Items);
-        var spawnedItem = Instantiate(randomPrefab);
-        var randomSpawnTile = enemyTile;
 
-        randomSpawnTile.SetItem(spawnedItem);
-    }
 
     private T GetRandomUnit<T>(Faction faction) where T : BaseUnit
     {

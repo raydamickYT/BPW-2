@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65f91fb75b4cc5c4f9d197bee5095dc0, type: 3}
+  m_Name: DmgIncrease
+  m_EditorClassIdentifier: 
+  faction: 2
+  unitPrefab: {fileID: 0}
+  ItemPrefab: {fileID: 4543515818378904286, guid: 32c64c6faf902a1479ec6984477ec6b3, type: 3}
+  icon: {fileID: 3024413351725788185, guid: 234ac5994eba3364db58a97dda7c83a9, type: 3}
+  id: 2
+  value: 10
+  itemName: Extra Dmg

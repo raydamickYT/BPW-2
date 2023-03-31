@@ -34,12 +34,11 @@ public class BaseEnemy : BaseUnit
         if (currentHealth <= 0)
         {
             //spawn een random item
-            UnitManager.Instance.spawnItem(occupiedTile);
-            Destroy(this.gameObject);
-            var waittime = 2 - Time.deltaTime;
-            //if (waittime <= 0)
+            ItemManager.instance.spawnItem(occupiedTile);
+            occupiedTile.occupiedUnit = null;
             
             BaseHero.instance.currentRoom.GetComponent<AddRoom>().enemiesInRoom.Remove(this);
+            Destroy(this.gameObject);
 
         }
     }

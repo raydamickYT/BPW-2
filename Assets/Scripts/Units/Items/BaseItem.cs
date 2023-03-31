@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class BaseItem : MonoBehaviour
 {
+    public ScriptableItems item;
+    [HideInInspector]
+    public Tile occupiedTile;
+    public Faction faction;
+
     // Start is called before the first frame update
     void Start()
     {

@@ -15,6 +15,7 @@ public abstract class Tile : MonoBehaviour
     [SerializeField] private LayerMask _layerMask;
 
     public BaseUnit occupiedUnit;
+    public BaseItem occupiedItem;
     //walkable is true if walkable is true and there is no unit on the tile (occupied unit == null)
     public bool walkable => IsWalkable && occupiedUnit == null;
     #endregion
@@ -62,12 +63,15 @@ public abstract class Tile : MonoBehaviour
         if (occupiedUnit != null)
         {
             //if selected tile is a hero. assign the selected hero to selected
-            if (occupiedUnit.faction == Faction.Hero)
+            if (occupiedUnit.faction == Faction.Hero && !occupiedUnit.moved)
             {
                 UnitManager.Instance.SetSelectedHero((BaseHero)occupiedUnit);
             }
             else
             {
+                if(occupiedUnit.moved){
+                    print("this hero has already moved");
+                }
                 //if the next selected tile is not a hero its an enemy
                 if (UnitManager.Instance.selectedHero != null)
                 {
@@ -107,6 +111,7 @@ public abstract class Tile : MonoBehaviour
     {
         //place an item
         unit.transform.position = transform.position;
+
     }
 
     public void SetHero(BaseUnit unit)

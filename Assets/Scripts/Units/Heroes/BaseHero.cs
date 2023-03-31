@@ -6,7 +6,8 @@ public class BaseHero : BaseUnit
 {
     public static BaseHero instance;
     public GameObject currentRoom;
-    public bool _movedRooms = false;
+    public bool _movedRooms = false, dmgBoost = false;
+    public float extraDMGTurns = 0;
     public Vector2 jumpDistance = new Vector2(0, 0);
 
     private void Awake()
@@ -25,6 +26,15 @@ public class BaseHero : BaseUnit
 
     public void Attack(BaseEnemy enemy, Vector2 enemyLocation)
     {
+        if (dmgBoost)
+        {
+            print(extraDMGTurns);
+            extraDMGTurns--;
+            if (extraDMGTurns == 0)
+            {
+                dmgBoost = false;
+            }
+        }
         var distanceX = Mathf.Abs(transform.position.x - enemyLocation.x);
         var distanceY = Mathf.Abs(transform.position.y - enemyLocation.y);
 
@@ -41,6 +51,26 @@ public class BaseHero : BaseUnit
         {
             Destroy(this.gameObject);
         }
+    }
+
+    public void increaseHealth(float value)
+    {
+        if (currentHealth < health)
+        {
+            currentHealth += value;
+            healthBar.fillAmount = (float)currentHealth / (float)health;
+        }
+        else
+        {
+            print("health is full");
+        }
+    }
+    public void increaseDmg(float value, float turns)
+    {
+        print("dmg boosted");
+        dmgBoost = true;
+        attackDmg += value;
+        extraDMGTurns += turns;
     }
 
     public bool inRange(Vector2 tilePos)

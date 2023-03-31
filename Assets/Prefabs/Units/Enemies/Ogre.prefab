@@ -437,7 +437,7 @@ MonoBehaviour:
   health: 100
   moveRange: 2
   attackRange: 2
-  attackDmg: 10
+  attackDmg: 6
   currentHealth: 0
   moved: 0
 --- !u!95 &5717940276461272859
